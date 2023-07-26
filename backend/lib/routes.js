@@ -1,5 +1,6 @@
 const is = require('./authorizer');
 const authenticate = require('./authenticator');
+const Task = require('../databaseModels/Task');
 
 const defineRoutes = (app) => {
   // Require authentication for all endpoints.
@@ -22,7 +23,7 @@ const defineRoutes = (app) => {
   });
 
   // New Task
-  app.post('/', is('Technician'), (req, res) => {
+  app.post('/', is('Technician'), async (req, res) => {
     console.log(req.body);
 
     const {
@@ -30,8 +31,7 @@ const defineRoutes = (app) => {
       summary
     } = req.body;
     
-    const newTask = {date: new Date(date), summary: summary};
-    // save to db.
+    const newTask = await Task.create({ date, summary });
 
     res.json({ id: newTask.id });
   });

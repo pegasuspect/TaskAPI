@@ -9,17 +9,10 @@ module.exports = (sequelize) =>{
       allowNull: false
     },
     datePerformed: {
-      type: Sequelize.DATE(3),
-      allowNull: false
+      type: Sequelize.DATE,
+      allowNull: false,
+      defaultValue: new Date()
     },
-    // createdAt: {
-    //   type: Sequelize.DATE(3),
-    //   defaultValue: Sequelize.literal('CURRENT_TIMESTAMP(3)'),
-    // },
-    // updatedAt: {
-    //   type: Sequelize.DATE(3),
-    //   defaultValue: Sequelize.literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)'),
-    // },
   }, {
     hooks: {
       beforeCreate: async (task) => {
@@ -28,10 +21,6 @@ module.exports = (sequelize) =>{
       }
     },
   });
-
-  model.associate = (db) => {
-    db.User.hasMany(db.Task, { foreignKey: 'userId' });
-  };
 
   return model;
 }
