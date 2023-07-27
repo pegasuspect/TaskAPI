@@ -10,5 +10,5 @@ jobs:
         steps:
             - uses: actions/checkout@v3
             - uses: ArtiomTr/jest-coverage-report-action@v2
-                with:
-                    custom-title: Coverage report for backend
+                  with:
+                      custom-title: Coverage report for backend
