@@ -1,11 +1,11 @@
 const { DataTypes, Sequelize } = require('sequelize');
-const bcrypt = require('bcryptjs');
+const { encrypt, decrypt } = require('../lib/encryption');
 
-module.exports = (sequelize) =>{
+module.exports = (sequelize) => {
   const model = sequelize.define('Task', {
     // Model attributes
     summary: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(10000),
       allowNull: false
     },
     datePerformed: {
@@ -16,8 +16,7 @@ module.exports = (sequelize) =>{
   }, {
     hooks: {
       beforeCreate: async (task) => {
-        const salt = await bcrypt.genSalt();
-        task.password = await bcrypt.hash(task.password, salt);
+        task.summary = encrypt(task.summary);
       }
     },
   });

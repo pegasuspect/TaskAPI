@@ -1,23 +1,23 @@
 const is = require('./authorizer');
 const authenticate = require('./authenticator');
-const Task = require('../databaseModels/Task');
+const { decrypt } = require('./encryption');
 
 const defineRoutes = (app) => {
   // Require authentication for all endpoints.
   app.use(authenticate);
 
   // List Tasks
-  app.get('/', (req, res) => {
+  app.get('/', async (req, res) => {
     // depending on the role;
     // - all
     // - my tasks
-    let tasks = [
-      {id: 0, date: new Date(), summary: 'Lorem ipsum dolor sit amet.'},
-      {id: 1, date: new Date(), summary: 'Lorem ipsum dolor sit amet.'},
-      {id: 2, date: new Date(), summary: 'Lorem ipsum dolor sit amet.'},
-      {id: 3, date: new Date(), summary: 'Lorem ipsum dolor sit amet.'},
-      {id: 4, date: new Date(), summary: 'Lorem ipsum dolor sit amet.'},
-    ];
+    const tasks = await app.db.Task.findAll();
+
+    console.log(tasks);
+
+    tasks.forEach(task => {
+      task.summary = decrypt(task.summary);
+    });
 
     res.json({ tasks });
   });
@@ -30,8 +30,8 @@ const defineRoutes = (app) => {
       date,
       summary
     } = req.body;
-    
-    const newTask = await Task.create({ date, summary });
+
+    const newTask = await app.db.Task.create({ date, summary });
 
     res.json({ id: newTask.id });
   });
