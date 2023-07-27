@@ -1,5 +1,5 @@
 const crypto = require('crypto');
-const { toBase64, toObj } = require('./utils');
+const { jsonToBase64, base64toObj } = require('./utils');
 
 const algorithm = 'aes-256-cbc';
 
@@ -15,11 +15,11 @@ function encrypt(text) {
 
   const record = { iv: iv.toString('hex'), encryptedData: encrypted.toString('hex') };
 
-  return toBase64(record);
+  return jsonToBase64(record);
 }
 
 function decrypt(base64EncryptedText) {
-  const encryptedObject = toObj(base64EncryptedText);
+  const encryptedObject = base64toObj(base64EncryptedText);
   const iv = Buffer.from(encryptedObject.iv, 'hex');
 
   const encryptedText = Buffer.from(encryptedObject.encryptedData, 'hex');

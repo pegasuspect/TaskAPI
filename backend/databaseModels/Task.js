@@ -1,5 +1,5 @@
 const { DataTypes, Sequelize } = require('sequelize');
-const { encrypt, decrypt } = require('../lib/encryption');
+const { encrypt } = require('../lib/encryption');
 
 module.exports = (sequelize) => {
   const model = sequelize.define('Task', {
@@ -13,12 +13,20 @@ module.exports = (sequelize) => {
       allowNull: false,
       defaultValue: new Date()
     },
+    createdBy: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    }
   }, {
     hooks: {
-      beforeCreate: async (task) => {
+      beforeUpdate: (task) => {
         task.summary = encrypt(task.summary);
-      }
+      },
+      beforeCreate: (task) => {
+        task.summary = encrypt(task.summary);
+      },
     },
+    sequelize
   });
 
   return model;

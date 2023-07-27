@@ -2,15 +2,19 @@
 require('dotenv').config();
 const path = require('path');
 const logger = require('morgan');
-const defineRoutes = require('./lib/routes');
+const defineRoutes = require('./routes');
+const dummySession = require('./middlewares/dummySession');
 const db = require('./databaseModels');
 
 // Express JS
 const express = require('express');
 const app = express();
 
-// Set global database reference
-app.db = db;
+app.use((req, res, next) => {
+  // Set database reference
+  req.db = db;
+  next();
+})
 
 // Request Logger
 app.use(logger('dev'));
@@ -22,5 +26,8 @@ app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 // Request parsed as json;
 // has to be done before defining routes!
 app.use(express.json());
+
+// Dummy session Middleware for simplification.
+app.use(dummySession);
 
 defineRoutes(app);

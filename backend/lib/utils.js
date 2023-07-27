@@ -1,5 +1,4 @@
-
-const toBase64 = (obj) => {
+const jsonToBase64 = (obj) => {
   // Convert object to JSON
   const json = JSON.stringify(obj);
 
@@ -10,7 +9,7 @@ const toBase64 = (obj) => {
   return buffer.toString('base64');
 }
 
-const toObj = (base64) => {
+const base64toObj = (base64) => {
   // Convert base64 to Buffer
   const buffer = Buffer.from(base64, 'base64');
 
@@ -21,7 +20,18 @@ const toObj = (base64) => {
   return JSON.parse(json);
 }
 
+const createHttpError = (code, msg, stack) => {
+  const err = new Error(msg);
+  err.status = code
+  if (stack) {
+    err.stack = stack;
+  }
+
+  return err;
+}
+
 module.exports = {
-  toBase64,
-  toObj
+  jsonToBase64,
+  base64toObj,
+  createHttpError
 }

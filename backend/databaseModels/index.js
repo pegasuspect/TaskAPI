@@ -23,7 +23,7 @@ sequelize.authenticate().then(() => {
     const model = require(fullPath)(sequelize, Sequelize.DataTypes);
     
     console.log("Initialized model at path: ", fullPath);
-    model.sync({ force: true });
+    model.sync();
 
     db[model.name] = model;
   });
