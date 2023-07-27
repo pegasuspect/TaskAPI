@@ -5,6 +5,7 @@ const logger = require('morgan');
 const defineRoutes = require('./routes');
 const dummySession = require('./middlewares/dummySession');
 const db = require('./databaseModels');
+const { rabbit } = require('./rabbit');
 
 // Express JS
 const express = require('express');
@@ -13,6 +14,10 @@ const app = express();
 app.use((req, res, next) => {
   // Set database reference
   req.db = db;
+
+  // Set messaging reference
+  req.rabbit = rabbit;
+
   next();
 })
 
