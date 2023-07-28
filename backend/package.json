@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage",
+    "test": "jest --coverage --resetMocks",
+    "generate256Key": "node -e \"console.log(require('./lib/encryption').generateNewEncryptionKey());\"",
     "dev": "nodemon index.js",
     "start": "node index.js"
   },

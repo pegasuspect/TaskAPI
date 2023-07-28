@@ -3,7 +3,8 @@
 2. Make sure you are in this directory by typing `pwd`
    - You should see something like `...../backend`
 3. Install packages `npm i`
-4. Start the server `npm start`
+4. Generate new encryption key using `npm run generate256Key`
+5. Start the server `npm start`
 
 ### How to Test or Use the Backend Service
 Since the API is very simple and the data is also not complicated, you can simply import the [Postman collection](./TasksService.postman_collection.json) and send requests as you please. Some of the endpoints add and update records.
