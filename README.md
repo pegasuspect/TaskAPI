@@ -1,11 +1,8 @@
-# TaskBackendService
-A backend service that runs on NodeJS on ExpressJS framework using sequelize for ORM to a mysql database.
+# Task Micro Services [![Unit Tests](https://github.com/pegasuspect/TaskBackendService/actions/workflows/node.js.yml/badge.svg)](https://github.com/pegasuspect/TaskBackendService/actions/workflows/node.js.yml)
+A backend service that runs on NodeJS on ExpressJS framework using sequelize for ORM to a mysql database, and occasionally send notifications to RabbitMQ.
 
-## Running Locally
-Following explanations are only for local development. Please do not follow any of the instructions for a production environment!
-
-### How to Use Database Locally
-Follow the readme guide in the [database](./database/) folder.
-
-### How to Use Task Backend Locally
-Follow the readme guide in the [backend](./backend/) folder.
+# Documentation
+Each service is seperated in their own folder. Each folder has a readme file for instructions on how to intialize and run locally.
+- [MySQL Database](./database/)
+- [NodeJS Backend API](./backend/)
+- [RabbitMQ Notification Service](./backend/)
