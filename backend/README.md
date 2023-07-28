@@ -4,6 +4,9 @@
    - You should see something like `...../backend`
 3. Install packages `npm i`
 4. Generate new encryption key using `npm run generate256Key`
+   - ![Generated key Screenshot](generatedKey.png)
+   - Copy this key and set it to `ENCRYPTION_KEY=<generateKey>` in your .env file
+   - A sample of this is in sample.env
 5. Start the server `npm start`
 
 ### How to Test or Use the Backend Service
