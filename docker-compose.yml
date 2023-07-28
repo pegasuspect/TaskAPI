@@ -1,0 +1,48 @@
+version: '3.8'
+services:
+  db:
+    build:
+      context: ./database
+      dockerfile: Dockerfile
+    volumes:
+      - ./database/data/:/var/lib/mysql
+    restart: always
+    ports:
+      - 3306:3306
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 81:8080
+    depends_on:
+      - db
+
+  rabbitmq:
+    build:
+      context: ./notification-service
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 15672:15672
+      - 5672:5672
+
+  consumer:
+    build:
+      context: ./consumer-service
+      dockerfile: Dockerfile
+    environment:
+      - MQ_URL=amqp://rabbitmq
+    depends_on:
+      - rabbitmq
+      
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    environment:
+      - MYSQL_HOST=db
+      - MQ_URL=amqp://rabbitmq
+    depends_on:
+      - db
+      - rabbitmq
