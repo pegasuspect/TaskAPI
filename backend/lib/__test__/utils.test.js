@@ -4,15 +4,16 @@ const {
   base64toObj
 } = require('../utils');
 
+const obj = {a: 1};
+const objBase64Encoded = 'eyJhIjoxfQ==';
+
 describe('routes', () => {
   it('should serialize object to base64', () => {
-    let obj = {a: 1, b: 2};
-    expect(jsonToBase64(obj)).toEqual(btoa(JSON.stringify(obj)));
+    expect(jsonToBase64(obj)).toEqual(objBase64Encoded);
   });
 
   it('should deserialize base64 to an object', () => {
-    let serializedObj = btoa(JSON.stringify({a: 1, b: 2}));
-    expect(base64toObj(serializedObj)).toEqual({a: 1, b: 2});
+    expect(base64toObj(objBase64Encoded)).toEqual(obj);
   });
 
   it('should create an error for http response', () => {

@@ -25,7 +25,8 @@ module.exports = async (req, res, next) => {
     } performed the task ${
       decrypt(newTask.summary)
     } on date ${newTask.date}`;
-    channel.sendToQueue(queue, new Buffer.from(notificationMessage));
+
+    channel.sendToQueue(queue, Buffer.from(notificationMessage));
 
     res.json({ id: newTask.id });
   } catch (error) {

@@ -1,45 +1,49 @@
+jest.mock('../../../lib/encryption');
+
 const createTask = require("../createTask");
 
 describe('createTask', () => {
   it('should forward an error to error handler', async () => {
-    let req = {};
-    let next = jest.fn();
+    const mockNext = jest.fn();
 
-    await createTask(req, {}, next);
+    await createTask({}, {}, mockNext);
 
-    expect(next).toHaveBeenCalledTimes(1);
+    expect(mockNext).toHaveBeenCalledTimes(1);
   });
 
   it('should create a new task', async () => {
-    let date = +new Date(); //unix date in seconds
-    let newTask = {
-      id: 1,
-    }
-    let req = {
+    const mockReq = {
       db: {
         Task: {
-          create: jest.fn().mockResolvedValueOnce(newTask)
+          create: jest.fn().mockResolvedValueOnce({ id: 1 })
         }
+      },
+      rabbit: {
+        channel: { sendToQueue: jest.fn() },
+        queue: 'mockQ',
       },
       user: {
         id: 1
       },
       body: {
-        date,
+        date: 'mock date',
         summary: 'mock summary'
       }
     };
-    let res = {
+
+    const mockRes = {
       json: jest.fn()
     }
-    let next = jest.fn();
 
-    await createTask(req, res, next);
+    const mockNext = jest.fn();
 
-    expect(next).not.toHaveBeenCalled();
-    expect(res.json).toHaveBeenCalledTimes(1);
-    expect(req.db.Task.create).toHaveBeenCalledWith({
-      ...req.body, 
+    await createTask(mockReq, mockRes, mockNext);
+
+    expect(mockNext).not.toHaveBeenCalled();
+    expect(mockRes.json).toHaveBeenCalledTimes(1);
+    expect(mockReq.rabbit.channel.sendToQueue).toHaveBeenCalledTimes(1);
+    expect(mockReq.db.Task.create).toHaveBeenCalledWith({
+      ...mockReq.body, 
       createdBy: 1
     });
   });

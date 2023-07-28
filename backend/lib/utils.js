@@ -1,5 +1,5 @@
 const jsonToBase64 = (obj) => {
-  return Buffer.from(JSON.stringify(obj)).toString();
+  return Buffer.from(JSON.stringify(obj)).toString('base64');
 }
 
 const base64toObj = (base64) => {

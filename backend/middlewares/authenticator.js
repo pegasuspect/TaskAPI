@@ -4,7 +4,6 @@ const authenticate = (req, _, next) => {
   if (!req.user) {
     console.log('Authentication failed, no user in the request!');
     
-    console.log(typeof createHttpError);
     next(createHttpError(401, 'Unauthorized!'));
     return;
   }
@@ -13,6 +12,7 @@ const authenticate = (req, _, next) => {
   
   if (!['Manager', 'Technician'].includes(req.user.role)) {
     console.log('User role is not recognized:', req.user.role);
+    
     next(createHttpError(401, 'Unauthorized!'));
     return;
   }

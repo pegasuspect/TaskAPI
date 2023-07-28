@@ -1,22 +1,12 @@
 jest.mock('../../../lib/encryption');
 jest.mock('../../../lib/utils');
 
+const listTasks = require('../listTasks');
+const { createHttpError } = require('../../../lib/utils');
+const { decrypt } = require('../../../lib/encryption');
+
 describe('listTask', () => {
-  const OLD_ENV = process.env;
-  
-  beforeEach(() => {
-    jest.resetModules() // Most important - it clears the cache
-    process.env = { ...OLD_ENV }; // Make a copy
-    process.env.ENCRYPTION_KEY = 'hCxv1h+uwdjkkGjIx2iLfqLhlmBBT6sc6N25haDDqUc=';
-  });
-  
-  afterAll(() => {
-    process.env = OLD_ENV; // Restore old environment
-  });
-
   it('should forward an error to error handler', async () => {
-    const listTasks = require('../listTasks');
-
     let req = {};
     let next = jest.fn();
 
@@ -26,9 +16,6 @@ describe('listTask', () => {
   });
 
   it('should only list Technicians\' tasks for a Technician', async () => {
-    const { decrypt } = require('../../../lib/encryption');
-    const listTasks = require('../listTasks');
-
     let tasks = [{
       id: 6345,
     }];
@@ -59,9 +46,6 @@ describe('listTask', () => {
   });
   
   it('should list all the tasks for a Manager', async () => {
-    const { decrypt } = require('../../../lib/encryption');
-    const listTasks = require('../listTasks');
-
     let tasks = [{
       id: 6345,
     }];
@@ -93,9 +77,6 @@ describe('listTask', () => {
   });
   
   it('should produce an http error for any other role', async () => {
-    const { createHttpError } = require('../../../lib/utils');
-    const listTasks = require('../listTasks');
-
     let tasks = [{
       id: 6345,
     }];
