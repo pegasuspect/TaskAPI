@@ -16,6 +16,8 @@ docker-compose build
 docker-compose up -d
 ```
 
+You will need to restart the api, and the consumer services after database and RabbitMQ Broker services started, due to premature connection requests. This could be prevented with a wait-for-it shell script. It would be out-of-scope of this project and complicate it unnecessarily. Instead a simple restart fixes this issue.
+
 For individual service testing and development you can also find docker-compose files inside the subfolders that correspond to the micro service.
 
 # Documentation
