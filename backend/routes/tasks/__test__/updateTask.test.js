@@ -2,33 +2,6 @@ jest.mock('../../../lib/utils');
 
 const { createHttpError } = require("../../../lib/utils");
 
-// module.exports = async (req, res, next) => {
-//   const { Task } = req.db;
-//   const {
-//     id,
-//     date,
-//     summary
-//   } = req.body;
-
-//   try {
-//     if (req.user.role === 'Manager') {
-//       await Task.update({ date, summary }, {
-//         where: { id }
-//       });
-//     } else {
-//       let task = await Task.findByPk(id);
-//       if (task.createdBy !== req.user.id) {
-//         next(createHttpError(401, 'Unauthorized!'))
-//       }
-//     }
-    
-//     res.json(true);
-//   } catch (error) {
-//     next(error);
-//   }
-
-// }
-
 const updateTask = require("../updateTask");
 
 describe('updateTask', () => {
