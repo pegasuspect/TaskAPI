@@ -9,7 +9,7 @@ Please note; in a production environment or in any case when publishing a porjec
 Follow these steps to do so:
 1. Open your terminal in the project directory, 
 2. cd into the databse folder `cd database`. 
-   - At this point when you type in `pwd` in terminal the prompt should show something like `......./TaskBackendService/databse`
+   - At this point when you type in `pwd` in terminal the prompt should show something like `......./TaskMicroServices/databse`
 3. Make sure you have docker desktop installed and the deamon is running by typing `docker version` in your terminal. You should get a response with version numbers.
 4. `docker-compose up`
 5. Once everything is running, go to http://localhost:81 with below credentials:
