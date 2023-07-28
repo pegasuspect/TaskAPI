@@ -19,7 +19,7 @@ docker-compose up -d
 For individual service testing and development you can also find docker-compose files inside the subfolders that correspond to the micro service.
 
 # Documentation
-Each service is seperated in their own folder. Each folder has a readme file for instructions on how to intialize and run locally. Please intialize each service in the following order to have a clean start:
+Each service is seperated in their own folder. Each folder has a readme file for instructions on how to intialize and run locally.
 
 ### Services
 1. [MySQL Database with Adminer for Quick Web Inspection](./database/README.md)
