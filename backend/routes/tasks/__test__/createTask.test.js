@@ -43,7 +43,8 @@ describe('createTask', () => {
     expect(mockRes.json).toHaveBeenCalledTimes(1);
     expect(mockReq.rabbit.channel.sendToQueue).toHaveBeenCalledTimes(1);
     expect(mockReq.db.Task.create).toHaveBeenCalledWith({
-      ...mockReq.body, 
+      datePerformed: 'mock date',
+      summary: 'mock summary',
       createdBy: 1
     });
   });
