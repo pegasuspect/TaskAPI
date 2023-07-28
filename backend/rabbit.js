@@ -17,6 +17,7 @@ amqp.connect(url, function (err, conn) {
       rabbit.channel = ch;
     });
   } catch (error) {
+    console.error('\n\nDid you set RabbitMQ env variable on .env file?\n\n');
     console.error(error);
   }
 });

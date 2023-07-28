@@ -1,9 +1,11 @@
-You will have to create a database with name `sword_health_tasks` in order for the app to connect to it.
+You will have to create a database with name `sword_health_tasks` in order for the app to connect to it. 
 
-In order to do that:
+You will also need to setup the env variables in your `.env` file with the values from your mysql database. Key names are outlines in sample.env file if you need it.
+
+Follow these steps to do so:
 1. Open your terminal in the project directory, 
-2. cd into the task-service folder `cd task-service`. 
-   - At this point when you type in `pwd` in terminal the prompt should show something like `......./TaskBackendService/task-service`
+2. cd into the databse folder `cd databse`. 
+   - At this point when you type in `pwd` in terminal the prompt should show something like `......./TaskBackendService/databse`
 3. Make sure you have docker desktop installed and the deamon is running by typing `docker version` in your terminal. You should get a response with version numbers.
 4. `docker-compose up`
 5. Once everything is running, go to http://localhost:81

@@ -38,7 +38,7 @@ sequelize.authenticate().then(() => {
   db.Sequelize = Sequelize;
 
 }).catch(error => {
-  console.error('Unable to connect to the database:', error);
+  console.error('\n\nUnable to connect to the database!\n\nAre you sure your .env file has the right values.\n\n\n', error);
 });
 
 module.exports = db;
