@@ -44,13 +44,15 @@ services:
     environment:
       - MYSQL_HOST=db
       - MQ_URL=amqp://rabbitmq
+      
       - DEBUG=backend:*
       - MYSQL_DB=sword_health_tasks
       - MYSQL_USERNAME=root
       - MYSQL_PASSWORD=root
-      - MYSQL_HOST=localhost
       - ENCRYPTION_KEY=P1bqV8JEQq9FP97B9IEGY93daKcDYAzKp33VDEU+Qfc=
       - QUEUE_NAME=my-queue
+    ports:
+      - 3000:3000
     depends_on:
       - db
       - rabbitmq

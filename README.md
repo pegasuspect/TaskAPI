@@ -8,7 +8,7 @@ You can make updates to this diagram by importing [this drawio xml file](./Archi
 
 # Documentation
 Each service is seperated in their own folder. Each folder has a readme file for instructions on how to intialize and run locally. Please intialize each service in the following order to have a clean start:
-1. [MySQL Database](./database/)
-2. [NodeJS Backend API](./backend/)
-3. [RabbitMQ Notification Service](./notification-service/)
-4. [NodeJS Consumer Service](./consumer-service/)
+1. [MySQL Database](./database/README.md)
+2. [NodeJS Backend API](./backend/README.md)
+3. [RabbitMQ Notification Service](./notification-service/README.md)
+4. [NodeJS Consumer Service](./consumer-service/README.md)
