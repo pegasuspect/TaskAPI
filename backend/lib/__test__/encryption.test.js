@@ -15,8 +15,17 @@ const { jsonToBase64, base64toObj } = require('../utils');
 const { encrypt, decrypt } = require('../encryption');
 
 describe('encryption', () => {
-  it('should encrypt into base64 format', () => {
+  // Set mock key for encryption tests
+  let temp;
+  beforeEach(() => {
+    temp = process.env.ENCRYPTION_KEY;
+    process.env.ENCRYPTION_KEY = "6IFwr4SIi1uWV/yAMToEOPBOURZJA/Xp4NetjB/IkUc=";
+  });
+  afterEach(() => {
+    process.env.ENCRYPTION_KEY = temp;
+  })
 
+  it('should encrypt into base64 format', () => {
     encrypt('this is a test');
 
     expect(jsonToBase64).toHaveBeenCalled();
