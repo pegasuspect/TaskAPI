@@ -1,23 +1,16 @@
 const jsonToBase64 = (obj) => {
-  // Convert object to JSON
-  const json = JSON.stringify(obj);
-
-  // Convert JSON to Buffer
-  const buffer = Buffer.from(json);
-
-  // Convert Buffer to base64
-  return buffer.toString('base64');
+  return Buffer.from(JSON.stringify(obj)).toString();
 }
 
 const base64toObj = (base64) => {
-  // Convert base64 to Buffer
-  const buffer = Buffer.from(base64, 'base64');
+  const jsonData = Buffer.from(base64, 'base64').toString();
 
-  // Convert Buffer to a string
-  const json = buffer.toString();
-
-  // Parse the JSON string to an object
-  return JSON.parse(json);
+  try {
+    return JSON.parse(jsonData);
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
 }
 
 const createHttpError = (code, msg, stack) => {
