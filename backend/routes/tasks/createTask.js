@@ -10,7 +10,7 @@ module.exports = async (req, res, next) => {
     } = req.body;
 
     const newTask = await Task.create({ 
-      date, 
+      datePerformed: date, 
       summary, 
       createdBy: req.user.id 
     });
@@ -24,7 +24,7 @@ module.exports = async (req, res, next) => {
       req.user.email
     } performed the task ${
       decrypt(newTask.summary)
-    } on date ${newTask.date}`;
+    } on date ${newTask.datePerformed}`;
 
     channel.sendToQueue(queue, Buffer.from(notificationMessage));
 
