@@ -1,24 +1,32 @@
 const amqp = require('amqplib/callback_api');
 
 // RabbitMQ
-const url = 'amqp://localhost';
+const url = process.env.MQ_URL;
 
 let rabbit = {
-  queue: 'my-queue',
+  queue: process.env.QUEUE_NAME,
 };
 
 rabbit.channel = null;
 amqp.connect(url, function (err, conn) {
-  if (!conn) {
-    throw new Error(`AMQP connection not available on ${url}`);
+  try {
+    if (!conn) {
+      throw new Error(`AMQP connection not available on ${url}`);
+    }
+    conn.createChannel(function (err, ch) {
+      rabbit.channel = ch;
+    });
+  } catch (error) {
+    console.error(error);
   }
-  conn.createChannel(function (err, ch) {
-    rabbit.channel = ch;
-  });
 });
 
 process.on('exit', code => {
-  rabbit.channel.close();
+  try {
+    rabbit.channel.close();
+  } catch (error) {
+    console.error(error);
+  }
   console.log(`Closing connection.`);
 });
 
