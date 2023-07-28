@@ -1,4 +1,4 @@
-You will have to create a database with name `sword_health_tasks` in order for the app to connect to it. 
+You will have to create a database with name `sword_health_tasks` in order for the app to connect to it.
 
 In order to do that:
 1. Open your terminal in the project directory, 

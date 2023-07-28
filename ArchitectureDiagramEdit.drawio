@@ -1,0 +1,38 @@
+<mxfile host="app.diagrams.net" modified="2023-07-28T05:20:34.783Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/115.0" etag="z5I-NIaAq1KC6jdybNVs" version="21.6.5" type="device">
+  <diagram name="Page-1" id="57_gjUxRK8M1becCH6hO">
+    <mxGraphModel dx="803" dy="492" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="emJM-WzwZN_10lMNNNkO-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=6;targetPerimeterSpacing=6;sourcePerimeterSpacing=6;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="380" y="260" as="sourcePoint" />
+            <mxPoint x="490" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="emJM-WzwZN_10lMNNNkO-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;targetPerimeterSpacing=6;sourcePerimeterSpacing=6;strokeWidth=6;endSize=6;jumpSize=6;" edge="1" parent="1" target="emJM-WzwZN_10lMNNNkO-5">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="320" y="330" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="emJM-WzwZN_10lMNNNkO-1" value="NodeJS API" style="html=1;image=img/lib/clip_art/computers/Server_Tower_128x128.png;outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;shape=mxgraph.aws3.android;fillColor=#8CC64F;gradientColor=none;" vertex="1" parent="1">
+          <mxGeometry x="280" y="220" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="emJM-WzwZN_10lMNNNkO-2" value="&lt;div&gt;MySQL DB&lt;/div&gt;" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/databases.svg;" vertex="1" parent="1">
+          <mxGeometry x="510" y="236" width="50" height="49" as="geometry" />
+        </mxCell>
+        <mxCell id="emJM-WzwZN_10lMNNNkO-5" value="&lt;div&gt;RabbitMQ Broker&lt;/div&gt;" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=https://cdn4.iconfinder.com/data/icons/Easter_lin/png/128x128/Coelho.png" vertex="1" parent="1">
+          <mxGeometry x="270" y="420" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="emJM-WzwZN_10lMNNNkO-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;targetPerimeterSpacing=6;sourcePerimeterSpacing=6;strokeWidth=6;" edge="1" parent="1" target="emJM-WzwZN_10lMNNNkO-5">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="470" y="470" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="emJM-WzwZN_10lMNNNkO-8" value="Consumer" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.android;fillColor=#8CC64F;gradientColor=none;" vertex="1" parent="1">
+          <mxGeometry x="487" y="428" width="73.5" height="84" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

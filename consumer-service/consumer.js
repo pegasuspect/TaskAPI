@@ -1,30 +1,24 @@
 const amqp = require('amqplib');
 
-// RabbitMQ connection string
-const connectionString = 'amqp://localhost';
+const mqURL = process.env.MQ_URL;
 
-async function consumeMessages() {
+async function main() {
   try {
-    // Connect to RabbitMQ server
-    const connection = await amqp.connect(connectionString);
+    const connection = await amqp.connect(mqURL);
     
-    // Create a channel
     const channel = await connection.createChannel();
     
-    // Queue name
-    const queueName = 'my-queue';
+    const queueName = process.env.QUEUE_NAME;
 
-    // Assert the queue exists
+    // Check queue
     await channel.assertQueue(queueName);
 
     console.log('Waiting for messages. To exit, press CTRL+C');
 
-    // Consume messages from the queue
     channel.consume(queueName, (msg) => {
       const message = msg.content.toString();
       console.log(`Received message: ${message}`);
 
-      // Acknowledge the message to remove it from the queue
       channel.ack(msg);
     });
 
@@ -33,5 +27,5 @@ async function consumeMessages() {
   }
 }
 
-// Start consuming messages
-consumeMessages();
+// Run the consumer
+main();
